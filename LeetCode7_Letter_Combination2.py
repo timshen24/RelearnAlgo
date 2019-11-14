@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     m = {
         '2': 'abc',
@@ -19,15 +21,19 @@ class Solution:
         return self.res
 
     def findCombination(self, digits, index, s):
+        print(f"{index}:{s}")
         if index == len(digits):
             self.res.append(s)
+            print(f"get {s}, return")
             return
         c = digits[index]
         letters = self.m[c]
         for i in range(len(letters)):
+            print(f"digits[{index}]={c}, use {letters[i]}")
             self.findCombination(digits, index + 1, s + letters[i])
+        print(f"digits[{index}]={c} complete, return")
 
 if __name__ == '__main__':
     solution = Solution()
-    solution.letterCombinations("2")
+    solution.letterCombinations("234")
     print(solution.res)
