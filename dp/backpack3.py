@@ -12,4 +12,4 @@ for i in range(1, len(w)):
         if j >= w[i]:
             memo[i][j] = max(memo[i][j], v[i] + memo[i - 1][j - w[i]])
 
-print(memo[2][5])
+print(memo[len(w) - 1][c])
