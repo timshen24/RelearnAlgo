@@ -6,17 +6,17 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        i,j,k=0,0,len(nums)-1
-        while j<=k:
-            if nums[j]==0:
-                nums[j],nums[i]=nums[i],nums[j]
-                i+=1
-                j+=1
-            elif nums[j]==2:
-                nums[j],nums[k]=nums[k],nums[j]
-                k-=1
+        zero, first, two = -1, 0, len(nums)
+        while first < two:
+            if nums[first] == 0:
+                zero += 1
+                nums[first], nums[zero] = nums[zero], nums[first]
+                first += 1
+            elif nums[first] == 2:
+                two -= 1
+                nums[first], nums[two] = nums[two], nums[first]
             else:
-                j+=1
+                first += 1
         return
 
 
