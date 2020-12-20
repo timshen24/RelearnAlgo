@@ -16,7 +16,6 @@ def insertion_sort(arr):
             j -= 1
         arr[j + 1] = insert_val
 
-
 if __name__ == '__main__':
     arr = [12, 1, 3, 45, 6, 0, -3, 12, 35, 16]
     insertion_sort(arr)

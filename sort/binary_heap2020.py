@@ -6,7 +6,7 @@ def upAdjust(arr):
         arr[childIndex], arr[parentIndex] = arr[parentIndex], arr[childIndex]
         childIndex = parentIndex
         parentIndex = (childIndex - 1) // 2
-    arr[childIndex] = temp
+    # arr[childIndex] = temp
 
 def downAdjust(arr, parentIndex, length):
     temp = arr[parentIndex]
@@ -19,7 +19,7 @@ def downAdjust(arr, parentIndex, length):
         arr[childIndex], arr[parentIndex] = arr[parentIndex], arr[childIndex]
         parentIndex = childIndex
         childIndex = parentIndex * 2 + 1
-    arr[parentIndex] = temp
+    # arr[parentIndex] = temp
 
 def buildHeap(arr):
     for i in range((len(arr) - 2) // 2, -1, -1):

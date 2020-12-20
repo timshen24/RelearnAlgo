@@ -2,21 +2,26 @@ from collections import Counter
 from typing import List
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        start, end = 0, 0
-        ans = []
-        c_counter, p_counter = Counter(), Counter(p)
-        while start < len(s):
-            if len(p) > end - start and end < len(s):
-                c_counter[s[end]] += 1
-                end += 1
-            else:
-                if c_counter == p_counter:
-                    ans.append(start)
-                c_counter[s[start]] -= 1
-                if c_counter[s[start]] == 0:
-                    del c_counter[s[start]]
-                start += 1
-        return ans
+        left, right = 0, 0
+        res = []
+        window, need = {}, {}
+        for c in p:
+            need[c] = need.get(c, 0) + 1
+        while right < len(s):
+            c = s[right]
+            right += 1
+            if c in need:
+                window[c] = window.get(c, 0) + 1
+            while right - left == len(p):
+                d = c[left]
+                if window == need:
+                    res.append(left)
+                if d in need:
+                    window[d] -= 1
+                    if not window[d]:
+                        del window[d]
+                left += 1
+        return res
 
 solution = Solution()
 print(solution.findAnagrams("cbaebabacd", "abc"))
