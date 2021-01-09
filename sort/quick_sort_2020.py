@@ -21,29 +21,37 @@ def quicksort(arr):
 def rand3WayQuickSort(arr):
     if len(arr) < 2:
         return arr
-    index = randint(0, len(arr) - 1)
-    pivot = arr[index]
+    randInd = randint(0, len(arr) - 1)
+    pivot = arr[randInd]
     left = [i for i in arr if i < pivot]
     medium = [i for i in arr if i == pivot]
     right = [i for i in arr if i > pivot]
     return rand3WayQuickSort(left) + medium + rand3WayQuickSort(right)
 
+# def partition(arr, startIndex, endIndex):
+#     randInd = randint(startIndex, endIndex)
+#     arr[startIndex], arr[randInd] = arr[randInd], arr[startIndex]
+#     pivot = arr[startIndex]
+#     left, right = startIndex, endIndex
+#     while left < right:
+#         while left < right and arr[right] > pivot:
+#             right -= 1
+#         while left < right and arr[left] <= pivot:
+#             left += 1
+#         if left < right:
+#             arr[left], arr[right] = arr[right], arr[left]
+#     arr[startIndex], arr[left] = arr[left], arr[startIndex]
+#     return left
 
-def partition(arr, startIndex, endIndex):
-    randInd = randint(startIndex, endIndex)
-    arr[startIndex], arr[randInd] = arr[randInd], arr[startIndex]
-    pivot = arr[startIndex]
-    left, right = startIndex, endIndex
-    while left < right:
-        while left < right and arr[right] > pivot:
-            right -= 1
-        while left < right and arr[left] <= pivot:
-            left += 1
-        if left < right:
-            arr[left], arr[right] = arr[right], arr[left]
-    arr[startIndex], arr[left] = arr[left], arr[startIndex]
-    return left
-
+def partition(arr, l, r):
+    pivot = arr[l]
+    j = l
+    for i in range(l, r + 1):
+        if arr[i] < pivot:
+            j += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[l], arr[j] = arr[j], arr[l]
+    return j
 
 def quickSortInPlace(arr, startIndex, endIndex):
     if startIndex >= endIndex:
@@ -51,7 +59,6 @@ def quickSortInPlace(arr, startIndex, endIndex):
     pivotIndex = partition(arr, startIndex, endIndex)
     quickSortInPlace(arr, startIndex, pivotIndex - 1)
     quickSortInPlace(arr, pivotIndex + 1, endIndex)
-
 
 def random3WayQuickSort(arr, startIndex, endIndex):
     if startIndex >= endIndex:
@@ -71,7 +78,6 @@ def random3WayQuickSort(arr, startIndex, endIndex):
             arr[eq], arr[gt] = arr[gt], arr[eq]
     random3WayQuickSort(arr, startIndex, lt)
     random3WayQuickSort(arr, gt, endIndex)
-
 
 if __name__ == '__main__':
     print(quicksort([10, 5, 2, 3, 3, 2, 2]))

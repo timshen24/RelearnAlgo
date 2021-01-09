@@ -6,17 +6,28 @@ class ListNode:
 
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
-        hair=ListNode(0,head)
-        p=head
-        pre=hair
-        while p and p.next:
-            nxt=p.next.next
-            pre.next=p.next
-            p.next.next=p
-            p.next=nxt
-            pre=p
-            p=nxt
+    #     hair=ListNode(0,head)
+    #     p=head
+    #     pre=hair
+    #     while p and p.next:
+    #         nxt=p.next.next
+    #         pre.next=p.next
+    #         p.next.next=p
+    #         p.next=nxt
+    #         pre=p
+    #         p=nxt
+    #     return hair.next
+        hair = ListNode(0, head)
+        prev = hair
+        while head and head.next:
+            nxt = head.next.next
+            prev.next = head.next.next
+            head.next.next = head
+            head.next = nxt
+            prev = head
+            head = nxt
         return hair.next
+
 
 solution = Solution()
 n1 = ListNode(1)
