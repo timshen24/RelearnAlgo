@@ -1,7 +1,7 @@
 #! -*- encoding=utf-8 -*-
 from doublelinkedlist.DoubleLinkedList import DoubleLinkedList, Node
 
-
+# FIFO的get不会使元素次序发生变化，元素次序变化仅与put有关
 class FIFOCache(object):
     def __init__(self, capacity):
         self.capacity = capacity
@@ -10,6 +10,7 @@ class FIFOCache(object):
         self.list = DoubleLinkedList(self.capacity)
 
     def get(self, key):
+        # key不在返回-1， 否则返回node.value
         if key not in self.map:
             return -1
         else:
@@ -17,6 +18,7 @@ class FIFOCache(object):
             return node.value
 
     def put(self, key, value):
+        # 如果key已经存在，则淘汰原来的node，将新的node append到列表最后（tail）
         if self.capacity == 0:
             return
         if key in self.map:
@@ -25,6 +27,7 @@ class FIFOCache(object):
             node.value = value
             self.list.append(node)
         else:
+            # 如果双向链表已满，则删除head元素，把新元素加进尾部
             if self.size == self.capacity:
                 node = self.list.pop()
                 del self.map[node.key]

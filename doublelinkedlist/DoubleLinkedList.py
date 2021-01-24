@@ -8,7 +8,7 @@ class Node:
         self.next = None
 
     def __str__(self):
-        val = f'{self.key}: {self.value}'
+        val = f'{{{self.key}:{self.value}}}'
         return val
 
     def __repr__(self):
@@ -74,6 +74,7 @@ class DoubleLinkedList:
         return node
 
     def __remove(self, node):
+        # if node is none, then del tail node
         if not node:
             node = self.tail
         if node == self.tail:

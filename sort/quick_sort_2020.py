@@ -46,15 +46,15 @@ def rand3WayQuickSort(arr):
 def partition(arr, l, r):
     pivot = arr[l]
     j = l
-    for i in range(l, r + 1):
+    for i in range(l + 1, r + 1):
         if arr[i] < pivot:
             j += 1
             arr[i], arr[j] = arr[j], arr[i]
-    arr[l], arr[j] = arr[j], arr[l]
+    arr[j], arr[l] = arr[l], arr[j]
     return j
 
 def quickSortInPlace(arr, startIndex, endIndex):
-    if startIndex >= endIndex:
+    if startIndex > endIndex:
         return
     pivotIndex = partition(arr, startIndex, endIndex)
     quickSortInPlace(arr, startIndex, pivotIndex - 1)
