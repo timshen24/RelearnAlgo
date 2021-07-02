@@ -34,6 +34,7 @@ class LRUCache(object):
     def print(self):
         self.list.print()
 
+
 if __name__ == '__main__':
     cache = LRUCache(2)
     cache.put(2, 2)
