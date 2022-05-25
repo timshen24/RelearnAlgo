@@ -23,10 +23,12 @@ def merge_sorted_array(left_list, right_list):
             sorted_arr += left_list[left_index:]
     return sorted_arr
 
+
 def merge_sort(arr):
     if len(arr) < 2:
         return arr
     left, right = split(arr)
     return merge_sorted_array(merge_sort(left), merge_sort(right))
+
 
 print(merge_sort([10, 9, 8, 7, 5, 2, 3, 1, 6, 11]))
