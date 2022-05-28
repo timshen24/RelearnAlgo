@@ -18,15 +18,15 @@ def quicksort(arr):
     return quicksort(left) + [pivot] + quicksort(right)
 
 
-def rand3WayQuickSort(arr):
+def rand3WaySort(arr):
     if len(arr) < 2:
         return arr
-    randInd = randint(0, len(arr) - 1)
-    pivot = arr[randInd]
+    index = randint(0, len(arr) - 1)
+    pivot = arr[index]
     left = [i for i in arr if i < pivot]
     medium = [i for i in arr if i == pivot]
     right = [i for i in arr if i > pivot]
-    return rand3WayQuickSort(left) + medium + rand3WayQuickSort(right)
+    return rand3WaySort(left) + medium + rand3WaySort(right)
 
 # def partition(arr, startIndex, endIndex):
 #     randInd = randint(startIndex, endIndex)
@@ -81,7 +81,7 @@ def random3WayQuickSort(arr, startIndex, endIndex):
 
 if __name__ == '__main__':
     print(quicksort([10, 5, 2, 3, 3, 2, 2]))
-    print(rand3WayQuickSort([10, 5, 2, 3, 3, 2, 2]))
+    print(rand3WaySort([10, 5, 2, 3, 3, 2, 2]))
     arr = [4, 7, 6, 5, 3, 2, 8, 1]
     quickSortInPlace(arr, 0, len(arr) - 1)
     print(arr)
