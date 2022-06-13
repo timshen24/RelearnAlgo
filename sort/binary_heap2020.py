@@ -10,7 +10,7 @@ def upAdjust(arr):
 
 def downAdjust(arr, parentIndex, length):
     temp = arr[parentIndex]
-    childIndex = parentIndex *  2 + 1
+    childIndex = parentIndex * 2 + 1
     while childIndex < length:
         if childIndex + 1 < length and arr[childIndex] < arr[childIndex + 1]:
             childIndex += 1
