@@ -55,7 +55,7 @@
 # (A == 1) or (A == 2)
 #
 # res = ""
-# def validateAndConvertTree(root: Node) -> Boolean:
+# def validateAndConvertTree(root: Node) -> bool:
 #     global res
 #     if not root:
 #         return True
