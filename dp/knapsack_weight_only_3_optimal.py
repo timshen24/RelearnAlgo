@@ -10,20 +10,20 @@ weights = [1, 3, 3, 5]
 n = len(weights)
 max_weights = sum(weights)
 
-dp = [[False] * (max_weights + 1) for _ in range(2)]
-
 
 def weight_only():
+    dp = [[False] * (max_weights + 1) for _ in range(2)]
     dp[0][0] = True
     for i in range(1, n + 1):
         for j in range(max_weights + 1):
-            dp[1][j] = dp[1][j] | dp[0][j]
+            dp[1][j] |= dp[0][j]
             if j >= weights[i-1]:
-                dp[1][j] = dp[1][j] | dp[0][j-weights[i-1]]
-        dp[0] = dp[1]
+                dp[1][j] |= dp[0][j-weights[i-1]]
+        dp[0][:] = dp[1][:]
+        # for w in range(max_weights + 1):  # update previous row to current row
+        #     dp[0][w] = dp[1][w]
+    return [i for i, num in enumerate(dp[1]) if num]
 
 
-weight_only()
-print(dp)
-print(dp[-1])
-print([i for i, num in enumerate(dp[-1]) if num])
+res = weight_only()
+print(res)
