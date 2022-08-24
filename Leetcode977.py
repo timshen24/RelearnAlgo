@@ -9,8 +9,10 @@ class Solution:
         while l <= r:
             if abs(nums[l]) < abs(nums[r]):
                 res[ptr] = nums[r] ** 2
+                r -= 1
             else:
                 res[ptr] = nums[l] ** 2
+                l += 1
             ptr -= 1
         return res
 
