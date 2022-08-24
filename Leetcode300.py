@@ -1,5 +1,5 @@
 from typing import List
-
+import bisect
 
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
@@ -23,14 +23,6 @@ class Solution1:
             if not greedy or greedy[-1] < num:
                 greedy.append(num)
             else:
-                l, r = 0, len(greedy)
-                loc = r-1
-                while l < r:
-                    mid = (l+r)//2
-                    if greedy[mid] >= num:
-                        loc = mid
-                        r -= 1
-                    else:
-                        l += 1
+                loc = bisect.bisect_left(greedy, num)
                 greedy[loc] = num
         return len(greedy)
