@@ -1,4 +1,6 @@
 from typing import List
+import sys
+sys.setrecursionlimit(1500)
 
 
 def max_score(dp, curSum, l, r) -> int:
