@@ -7,19 +7,19 @@ from typing import List
 #
 def coin_game(coins: List[int]) -> int:
     n = len(coins)
-    prefix_sum = [0 for i in range(n + 1)]
-    for i in range(1, n + 1):
-        prefix_sum[i] = prefix_sum[i - 1] + coins[i - 1]
-
-    dp = [[0 for i in range(n + 1)] for j in range(n + 1)]
-    for size in range(0, n):
-        for l in range(1, n - size + 1):
+    curSums = [0] * n
+    for i in range(len(curSums)):
+        curSums[i] = curSums[i-1] + coins[i] if i > 0 else coins[0]
+    dp = [[0] * n for _ in range(n)]
+    for size in range(n):
+        for l in range(n-size):
             r = l + size
             if l == r:
-                dp[l][r] = prefix_sum[r] - prefix_sum[l - 1]
+                dp[l][r] = curSums[r] - (curSums[l-1] if l > 0 else 0)
             else:
-                dp[l][r] = prefix_sum[r] - prefix_sum[l - 1] - min(dp[l + 1][r], dp[l][r - 1])
-    return dp[1][n]
+                dp[l][r] = curSums[r] - (curSums[l-1] if l > 0 else 0) - min(dp[l+1][r], dp[l][r-1])
+    return dp[0][n-1]
+
 
 
 if __name__ == '__main__':
