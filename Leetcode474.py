@@ -9,7 +9,7 @@ class Solution:
             for j in range(m + 1):
                 for k in range(n + 1):
                     if j >= mCount and k >= nCount:
-                        dp[i][j][k] = max(dp[i-1][j][k], dp[i-1][j-mCount][k-nCount]) + 1
+                        # dp[i][j][k] = max(dp[i-1][j][k], dp[i-1][j-mCount][k-nCount]) + 1
                         dp[i][j][k] = max(dp[i - 1][j][k], dp[i - 1][j - mCount][k - nCount] + 1)
                     else:
                         dp[i][j][k] = dp[i-1][j][k]
