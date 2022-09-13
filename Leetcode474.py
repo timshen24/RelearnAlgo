@@ -9,14 +9,9 @@ class Solution:
             for j in range(m + 1):
                 for k in range(n + 1):
                     if j >= mCount and k >= nCount:
-                        # dp[i][j][k] = max(dp[i-1][j][k], dp[i-1][j-mCount][k-nCount]) + 1
                         dp[i][j][k] = max(dp[i - 1][j][k], dp[i - 1][j - mCount][k - nCount] + 1)
                     else:
                         dp[i][j][k] = dp[i-1][j][k]
-                    # if j < mCount or k < nCount:    # 无法添加当前字符串
-                    #     dp[i][j][k] = dp[i-1][j][k]
-                    # else:                   # 可选或不选当前字符串，取两者之间的较大值
-                    #     dp[i][j][k] = max( dp[i-1][j][k], dp[i-1][j-mCount][k-nCount] + 1 )
         print(dp)
         return dp[length][m][n]
 
