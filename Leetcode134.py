@@ -10,7 +10,7 @@ class Solution:
             if not currentStart:
                 currentStart = currentLocation
             currentGas += gas[currentLocation % n] - cost[currentLocation % n]
-            if currentGas < 0:π
+            if currentGas < 0:
                 currentStart = None
                 currentGas = 0
             currentLocation += 1
