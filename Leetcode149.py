@@ -8,7 +8,7 @@ class Solution:
         for i in range(n):
             d = {}
             for j in range(i + 1, n):
-                xi, yi, xj, yj = poinπts[i][0], points[i][1], points[j][0], points[j][1]
+                xi, yi, xj, yj = points[i][0], points[i][1], points[j][0], points[j][1]
                 deltaX, deltaY = xj - xi, yj - yi
                 g = self.gcd(deltaX, deltaY)
                 k = str(deltaX // g) + "/" + str(deltaY // g)
