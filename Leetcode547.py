@@ -1,9 +1,8 @@
 from typing import List
 
-
 class UnionFind:
-    def __init__(self):
-        self.id = {}
+    def __init__(self, n):
+        self.id = {i: i for i in range(n)}
 
     def find(self, x):
         y = self.id.get(x, x)
@@ -17,14 +16,13 @@ class UnionFind:
 
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        uf = UnionFind()
-        uf.id = {i: i for i in range(len(isConnected[0]))}
-        for r in range(len(isConnected)):
-            for c in range(len(isConnected[0])):
+        n = len(isConnected)
+        uf = UnionFind(n)
+        for r in range(n):
+            for c in range(n):
                 if isConnected[r][c]:
                     uf.union(r, c)
-        print(uf.id)
-        return len(set(uf.find(i) for i, _ in uf.id.items()))
+        return len(set(uf.find(i) for i in uf.id.keys()))
 
 
 solution = Solution()
