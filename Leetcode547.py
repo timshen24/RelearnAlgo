@@ -26,5 +26,30 @@ class Solution:
         print(uf.id)
         return len(set(uf.find(i) for i, _ in uf.id.items()))
 
-solution = Solution()
+
+# solution = Solution()
+# print(solution.findCircleNum([[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 1], [1, 0, 1, 1]]))
+
+from collections import deque
+
+class SolutionBFS:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        cities = len(isConnected)
+        visited = set()
+        provinces = 0
+        for i in range(cities):
+            if i not in visited:
+                queue = deque([i])
+                while queue:
+                    j = queue.popleft()
+                    visited.add(j)
+                    for k in range(cities):
+                        if isConnected[j][k] == 1 and k not in visited:
+                            queue.append(k)
+                provinces += 1
+        return provinces
+
+
+solution = SolutionBFS()
+print(solution.findCircleNum([[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
 print(solution.findCircleNum([[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 1], [1, 0, 1, 1]]))
