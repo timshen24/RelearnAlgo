@@ -32,7 +32,7 @@ class SolutionDFS:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         def dfs(i: int):
             for j in range(cities):
-                if isConnected[i][j] == 1 and j not in visited:
+                if isConnected[i][j] and j not in visited:
                     visited.add(j)
                     dfs(j)
 
