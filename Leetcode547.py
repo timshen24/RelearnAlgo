@@ -37,15 +37,16 @@ class SolutionBFS:
         cities = len(isConnected)
         visited = set()
         provinces = 0
+
         for i in range(cities):
             if i not in visited:
                 queue = deque([i])
                 while queue:
                     j = queue.popleft()
-                    visited.add(j)
                     for k in range(cities):
-                        if isConnected[j][k] == 1 and k not in visited:
+                        if isConnected[j][k] and k not in visited:
                             queue.append(k)
+                            visited.add(k)
                 provinces += 1
         return provinces
 
