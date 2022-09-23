@@ -13,7 +13,7 @@ class UnionFind4(object):
             self.__parent[p] = self.find(self.__parent[p])
 
     def isConnected(self, p, q):
-        return selπf.find(p) == self.find(q)
+        return self.find(p) == self.find(q)
 
     def union(self, p, q):
         pRoot = self.find(p)
