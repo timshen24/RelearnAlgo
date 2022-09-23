@@ -5,16 +5,15 @@ class UnionFind4(object):
     def __init__(self, n):
         self.__count = n
         self.__parent = [i for i in range(n)]
-        self.__rank = [1 for i in range(n)] # numbers of level in the set with i as root
+        self.__rank = [1 for _ in range(n)] # numbers of level in the set with i as root
 
     def find(self, p):
         assert 0 <= p < self.__count
         if p != self.__parent[p]:
             self.__parent[p] = self.find(self.__parent[p])
-        return self.__parent[p]
 
     def isConnected(self, p, q):
-        return self.find(p) == self.find(q)
+        return selπf.find(p) == self.find(q)
 
     def union(self, p, q):
         pRoot = self.find(p)
