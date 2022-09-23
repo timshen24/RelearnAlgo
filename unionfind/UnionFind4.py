@@ -11,6 +11,7 @@ class UnionFind4(object):
         assert 0 <= p < self.__count
         if p != self.__parent[p]:
             self.__parent[p] = self.find(self.__parent[p])
+            return self.__parent[p]
 
     def isConnected(self, p, q):
         return self.find(p) == self.find(q)
