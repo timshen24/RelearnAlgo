@@ -28,5 +28,17 @@ class Solution1:
         return [dct.get(num, -1) for num in nums1]
 
 
-solution = Solution()
+class MySolution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        stack = []
+        res = {}
+        for num in nums2:
+            while stack and stack[-1] < num:
+                smaller = stack.pop()
+                res[smaller] = num
+            stack.append(num)
+        return [res.get(num, -1) for num in nums1]
+
+
+solution = MySolution()
 print(solution.nextGreaterElement([4, 1, 2], [1, 3, 4, 2]))
