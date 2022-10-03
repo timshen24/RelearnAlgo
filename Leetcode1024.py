@@ -22,7 +22,18 @@ class Solution:
         return ret
 
 
+class Solution1:
+    def videoStitching(self, clips: List[List[int]], time: int) -> int:
+        clips.sort(key = lambda x: (x[0], x[1]))
+        dp = [float('inf')]*101
+        dp[0] = 0
+        for s, e in clips:
+            for i in range(s, e+1):
+                dp[i] = min(dp[i], dp[s]+1)
+        print(dp)
+        return dp[time] if dp[time]!=float('inf') else -1
 
-solution = Solution()
+
+solution = Solution1()
 print(solution.videoStitching([[0, 2], [4, 6], [8, 10], [1, 9], [1, 5], [5, 9]], 10))
 assert solution.videoStitching([[0, 2], [4, 6], [8, 10], [1, 9], [1, 5], [5, 9]], 10) == 3
