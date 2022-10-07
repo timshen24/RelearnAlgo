@@ -30,8 +30,8 @@ class UnionFind5:
 
 
 if __name__ == '__main__':
-    n = 1000000
-    uf = UnionFind5(n)
+    n = 10
+    uf = UnionFind5()
     T1 = time.time()
     for i in range(n):
         a = randint(0, n - 1)
@@ -40,6 +40,8 @@ if __name__ == '__main__':
         # if i % 100 == 0:
         #     print(f'finish a union batch(i={i})')
     print('finished union')
+    print(f'uf.parent={uf.parent}')
+    print(f'uf.rank={uf.rank}')
     for i in range(n):
         a = randint(0, n - 1)
         b = randint(0, n - 1)
