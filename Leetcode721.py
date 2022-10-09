@@ -34,14 +34,14 @@ from collections import defaultdict
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         union_find = UnionFind()
-        parents = {}
+        parents = []
         emailToName = {}
 
         for account in accounts:
             name = account[0]
             for email in account[1:]:
                 emailToName[email] = name
-                parents[email] = email
+                parents.append(email)
 
         for account in accounts:
             email1 = account[1]
