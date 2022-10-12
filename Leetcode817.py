@@ -9,10 +9,10 @@ class ListNode:
 class Solution:
     def numComponents(self, head: Optional[ListNode], nums: List[int]) -> int:
         ans = 0
-        nset = set(nums)
+        numSet = set(nums)
         while head:
-            if head.val in nset:
-                while head and head.val in nset:
+            if head.val in numSet:
+                while head and head.val in numSet:
                     head = head.next
                 ans += 1
             else:
