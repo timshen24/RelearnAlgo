@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def splitArraySameAverage(self, nums: List[int]) -> bool:
         n = len(nums)
@@ -22,9 +23,12 @@ class Solution:
             vis.add(t)
         for i in range(1, 1 << (n - m)):
             t = sum(v for j, v in enumerate(nums[m:]) if i >> j & 1)
-            if t == 0 or (i != (1 << (n - m)) - 1 and -t in vis):
+            # if t == 0 or (i != (1 << (n - m)) - 1 and -t in vis):
+            if t == 0 or -t in vis:
                 return True
         return False
 
+
 solution = Solution()
-print(solution.splitArraySameAverage([1, 2, 3, 4, 5, 6, 7, 8]))
+# print(solution.splitArraySameAverage([1, 2, 3, 4, 5, 6, 7, 8]))
+print(solution.splitArraySameAverage([3, 1]))
