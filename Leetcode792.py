@@ -25,4 +25,5 @@ class Solution:
 
 solution = Solution()
 print(solution.numMatchingSubseq("abcde", ["a", "bb", "acd", "ace"]))
+print(solution.numMatchingSubseq("abcde", ["j"]))
 print(solution.numMatchingSubseq(s="dsahjpjauf", words=["ahjpjau", "ja", "ahbwzgqnuk", "tnmlanowax"]))
